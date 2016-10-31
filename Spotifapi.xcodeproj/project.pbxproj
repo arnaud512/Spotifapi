@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		51940A401DC7A429005A207B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51940A3F1DC7A429005A207B /* AppDelegate.swift */; };
-		51940A421DC7A429005A207B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51940A411DC7A429005A207B /* ViewController.swift */; };
+		51940A421DC7A429005A207B /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51940A411DC7A429005A207B /* MainTableViewController.swift */; };
 		51940A451DC7A429005A207B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51940A431DC7A429005A207B /* Main.storyboard */; };
 		51940A481DC7A429005A207B /* Spotifapi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51940A461DC7A429005A207B /* Spotifapi.xcdatamodeld */; };
 		51940A4A1DC7A429005A207B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51940A491DC7A429005A207B /* Assets.xcassets */; };
@@ -43,7 +43,7 @@
 		338AE79CB26A285DA12F4B3C /* Pods_Spotifapi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotifapi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51940A3C1DC7A429005A207B /* Spotifapi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotifapi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51940A3F1DC7A429005A207B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		51940A411DC7A429005A207B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		51940A411DC7A429005A207B /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		51940A441DC7A429005A207B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		51940A471DC7A429005A207B /* Spotifapi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spotifapi.xcdatamodel; sourceTree = "<group>"; };
 		51940A491DC7A429005A207B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				51940A3F1DC7A429005A207B /* AppDelegate.swift */,
-				51940A411DC7A429005A207B /* ViewController.swift */,
+				51940A411DC7A429005A207B /* MainTableViewController.swift */,
 				51940A431DC7A429005A207B /* Main.storyboard */,
 				51940A491DC7A429005A207B /* Assets.xcassets */,
 				51940A4B1DC7A429005A207B /* LaunchScreen.storyboard */,
@@ -337,7 +337,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		536A261EE6D6D054BEF2A253 /* [CP] Embed Pods Frameworks */ = {
@@ -427,7 +427,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F735987D7064179B24867188 /* [CP] Check Pods Manifest.lock */ = {
@@ -442,7 +442,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -453,7 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51940A481DC7A429005A207B /* Spotifapi.xcdatamodeld in Sources */,
-				51940A421DC7A429005A207B /* ViewController.swift in Sources */,
+				51940A421DC7A429005A207B /* MainTableViewController.swift in Sources */,
 				51940A401DC7A429005A207B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,6 +609,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 97MVV2N8MA;
 				INFOPLIST_FILE = Spotifapi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.arnaudupuy.Spotifapi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -623,6 +624,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 97MVV2N8MA;
 				INFOPLIST_FILE = Spotifapi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.arnaudupuy.Spotifapi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -711,6 +713,7 @@
 				51940A691DC7A429005A207B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		51940A6A1DC7A429005A207B /* Build configuration list for PBXNativeTarget "SpotifapiTests" */ = {
 			isa = XCConfigurationList;
@@ -719,6 +722,7 @@
 				51940A6C1DC7A429005A207B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		51940A6D1DC7A429005A207B /* Build configuration list for PBXNativeTarget "SpotifapiUITests" */ = {
 			isa = XCConfigurationList;
@@ -727,6 +731,7 @@
 				51940A6F1DC7A429005A207B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
