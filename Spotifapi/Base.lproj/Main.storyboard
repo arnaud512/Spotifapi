@@ -102,10 +102,23 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c9-xT-hTj">
+                                            <rect key="frame" x="8" y="629" width="359" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="ZLX-0z-fFe"/>
+                                            </constraints>
+                                            <state key="normal" title="Pause"/>
+                                            <connections>
+                                                <action selector="lectureToogle:" destination="Sca-5M-asQ" eventType="touchUpInside" id="IfZ-dc-QTP"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="cg8-iR-RfE" firstAttribute="centerX" secondItem="n6J-yu-r5m" secondAttribute="centerX" id="8Iy-n8-wlc"/>
+                                        <constraint firstAttribute="trailing" secondItem="2c9-xT-hTj" secondAttribute="trailing" constant="8" id="PDx-TG-bQZ"/>
                                         <constraint firstItem="cg8-iR-RfE" firstAttribute="top" secondItem="n6J-yu-r5m" secondAttribute="top" constant="100" id="SiK-Km-SVW"/>
+                                        <constraint firstItem="2c9-xT-hTj" firstAttribute="leading" secondItem="n6J-yu-r5m" secondAttribute="leading" constant="8" id="b4Q-WU-StD"/>
+                                        <constraint firstAttribute="bottom" secondItem="2c9-xT-hTj" secondAttribute="bottom" constant="8" id="cPN-Q1-lpb"/>
                                         <constraint firstItem="1dL-Qt-hID" firstAttribute="trailing" secondItem="cg8-iR-RfE" secondAttribute="trailing" id="qYw-SF-24i"/>
                                         <constraint firstItem="1dL-Qt-hID" firstAttribute="top" secondItem="cg8-iR-RfE" secondAttribute="bottom" constant="8" id="rE7-lx-Ww4"/>
                                         <constraint firstItem="1dL-Qt-hID" firstAttribute="leading" secondItem="cg8-iR-RfE" secondAttribute="leading" id="xVE-fR-6pR"/>
@@ -128,6 +141,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImage" destination="baS-af-4l6" id="wce-BI-v6x"/>
+                        <outlet property="lectureButton" destination="2c9-xT-hTj" id="IBu-fS-Z9k"/>
                         <outlet property="trackImage" destination="cg8-iR-RfE" id="ork-hx-Cai"/>
                         <outlet property="trackTitle" destination="1dL-Qt-hID" id="Pca-Ug-pBg"/>
                     </connections>

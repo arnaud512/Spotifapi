@@ -11,4 +11,5 @@ import UIKit
 struct Track {
     let title: String!
     let image: UIImage!
+    let previewUrl: URL!
 }
