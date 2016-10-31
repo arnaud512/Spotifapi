@@ -15,6 +15,9 @@
 		51940A4D1DC7A429005A207B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51940A4B1DC7A429005A207B /* LaunchScreen.storyboard */; };
 		51940A581DC7A429005A207B /* SpotifapiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51940A571DC7A429005A207B /* SpotifapiTests.swift */; };
 		51940A631DC7A429005A207B /* SpotifapiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51940A621DC7A429005A207B /* SpotifapiUITests.swift */; };
+		E03491DE482125A19F96D21B /* Pods_SpotifapiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0DA03A158A94D719FF8836 /* Pods_SpotifapiTests.framework */; };
+		EEF4C453652390BFC5731551 /* Pods_SpotifapiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7094D6B64C7D7837EC15514 /* Pods_SpotifapiUITests.framework */; };
+		F8624C5C7914EC9E3A5E31D6 /* Pods_Spotifapi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338AE79CB26A285DA12F4B3C /* Pods_Spotifapi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1965139B3C28E4AF1860AA9E /* Pods-SpotifapiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifapiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifapiTests/Pods-SpotifapiTests.release.xcconfig"; sourceTree = "<group>"; };
+		1F0DA03A158A94D719FF8836 /* Pods_SpotifapiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotifapiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		338AE79CB26A285DA12F4B3C /* Pods_Spotifapi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotifapi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51940A3C1DC7A429005A207B /* Spotifapi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotifapi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51940A3F1DC7A429005A207B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51940A411DC7A429005A207B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +55,12 @@
 		51940A5E1DC7A429005A207B /* SpotifapiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotifapiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		51940A621DC7A429005A207B /* SpotifapiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifapiUITests.swift; sourceTree = "<group>"; };
 		51940A641DC7A429005A207B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D56BD77365A0B13A116B01D /* Pods-Spotifapi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotifapi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spotifapi/Pods-Spotifapi.release.xcconfig"; sourceTree = "<group>"; };
+		78B0BDC96FEE3552FEF2D36E /* Pods-SpotifapiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifapiTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifapiTests/Pods-SpotifapiTests.debug.xcconfig"; sourceTree = "<group>"; };
+		93491BB561EF613F8C3EC5CD /* Pods-Spotifapi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotifapi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spotifapi/Pods-Spotifapi.debug.xcconfig"; sourceTree = "<group>"; };
+		9ABFEDE648EF6BA2CB5983B7 /* Pods-SpotifapiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifapiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifapiUITests/Pods-SpotifapiUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A658EEC5A842E21C17D04B03 /* Pods-SpotifapiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifapiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifapiUITests/Pods-SpotifapiUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B7094D6B64C7D7837EC15514 /* Pods_SpotifapiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotifapiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8624C5C7914EC9E3A5E31D6 /* Pods_Spotifapi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E03491DE482125A19F96D21B /* Pods_SpotifapiTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEF4C453652390BFC5731551 /* Pods_SpotifapiUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2571C99F9A6A4C5367F6E97A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				93491BB561EF613F8C3EC5CD /* Pods-Spotifapi.debug.xcconfig */,
+				6D56BD77365A0B13A116B01D /* Pods-Spotifapi.release.xcconfig */,
+				78B0BDC96FEE3552FEF2D36E /* Pods-SpotifapiTests.debug.xcconfig */,
+				1965139B3C28E4AF1860AA9E /* Pods-SpotifapiTests.release.xcconfig */,
+				A658EEC5A842E21C17D04B03 /* Pods-SpotifapiUITests.debug.xcconfig */,
+				9ABFEDE648EF6BA2CB5983B7 /* Pods-SpotifapiUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		51940A331DC7A428005A207B = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +111,8 @@
 				51940A561DC7A429005A207B /* SpotifapiTests */,
 				51940A611DC7A429005A207B /* SpotifapiUITests */,
 				51940A3D1DC7A429005A207B /* Products */,
+				2571C99F9A6A4C5367F6E97A /* Pods */,
+				C934F870DADB3ECF65293741 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +158,16 @@
 			path = SpotifapiUITests;
 			sourceTree = "<group>";
 		};
+		C934F870DADB3ECF65293741 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				338AE79CB26A285DA12F4B3C /* Pods_Spotifapi.framework */,
+				1F0DA03A158A94D719FF8836 /* Pods_SpotifapiTests.framework */,
+				B7094D6B64C7D7837EC15514 /* Pods_SpotifapiUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +175,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 51940A671DC7A429005A207B /* Build configuration list for PBXNativeTarget "Spotifapi" */;
 			buildPhases = (
+				04CB443A638742190357AC3B /* [CP] Check Pods Manifest.lock */,
 				51940A381DC7A428005A207B /* Sources */,
 				51940A391DC7A428005A207B /* Frameworks */,
 				51940A3A1DC7A428005A207B /* Resources */,
+				045BE70FA0C237740933FDBF /* [CP] Embed Pods Frameworks */,
+				66192C595737B7AF0A1143DE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 51940A6A1DC7A429005A207B /* Build configuration list for PBXNativeTarget "SpotifapiTests" */;
 			buildPhases = (
+				CEF69968F5B870D08103FBAB /* [CP] Check Pods Manifest.lock */,
 				51940A4F1DC7A429005A207B /* Sources */,
 				51940A501DC7A429005A207B /* Frameworks */,
 				51940A511DC7A429005A207B /* Resources */,
+				536A261EE6D6D054BEF2A253 /* [CP] Embed Pods Frameworks */,
+				6113559EEBF4438F5504B2A7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 51940A6D1DC7A429005A207B /* Build configuration list for PBXNativeTarget "SpotifapiUITests" */;
 			buildPhases = (
+				F735987D7064179B24867188 /* [CP] Check Pods Manifest.lock */,
 				51940A5A1DC7A429005A207B /* Sources */,
 				51940A5B1DC7A429005A207B /* Frameworks */,
 				51940A5C1DC7A429005A207B /* Resources */,
+				B02049478FEEC233B8BEEB19 /* [CP] Embed Pods Frameworks */,
+				63A3B2447D5852778ED7991F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,6 +308,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		045BE70FA0C237740933FDBF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Spotifapi/Pods-Spotifapi-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		04CB443A638742190357AC3B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		536A261EE6D6D054BEF2A253 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpotifapiTests/Pods-SpotifapiTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6113559EEBF4438F5504B2A7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpotifapiTests/Pods-SpotifapiTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63A3B2447D5852778ED7991F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpotifapiUITests/Pods-SpotifapiUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66192C595737B7AF0A1143DE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Spotifapi/Pods-Spotifapi-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B02049478FEEC233B8BEEB19 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpotifapiUITests/Pods-SpotifapiUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CEF69968F5B870D08103FBAB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F735987D7064179B24867188 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		51940A381DC7A428005A207B /* Sources */ = {
@@ -417,6 +604,7 @@
 		};
 		51940A681DC7A429005A207B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93491BB561EF613F8C3EC5CD /* Pods-Spotifapi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 97MVV2N8MA;
@@ -430,6 +618,7 @@
 		};
 		51940A691DC7A429005A207B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D56BD77365A0B13A116B01D /* Pods-Spotifapi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 97MVV2N8MA;
@@ -443,6 +632,7 @@
 		};
 		51940A6B1DC7A429005A207B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78B0BDC96FEE3552FEF2D36E /* Pods-SpotifapiTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -458,6 +648,7 @@
 		};
 		51940A6C1DC7A429005A207B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1965139B3C28E4AF1860AA9E /* Pods-SpotifapiTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -473,6 +664,7 @@
 		};
 		51940A6E1DC7A429005A207B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A658EEC5A842E21C17D04B03 /* Pods-SpotifapiUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 97MVV2N8MA;
@@ -487,6 +679,7 @@
 		};
 		51940A6F1DC7A429005A207B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9ABFEDE648EF6BA2CB5983B7 /* Pods-SpotifapiUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 97MVV2N8MA;
