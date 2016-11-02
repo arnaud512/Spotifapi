@@ -8,13 +8,14 @@
 
 import UIKit
 import Alamofire
-import AVFoundation
 
-var player = AVAudioPlayer()
-
-class MainTableViewController: UITableViewController {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var playerContainer: UIView!
     
     typealias JSONStandard = [String : AnyObject]
+    
+    @IBOutlet weak var tableView: UITableView!
 
     let searchUrl = "https://api.spotify.com/v1/search?q=Muse&type=track"
     var tracks = [Track]()
@@ -22,7 +23,9 @@ class MainTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Spotifapi"
-        callAlamo(url: searchUrl)
+        
+        // TODO: make this non-blocking
+        self.callAlamo(url: self.searchUrl)
     }
     
     func callAlamo(url: String) {
@@ -41,9 +44,9 @@ class MainTableViewController: UITableViewController {
                         let previewURL = URL(string: item["preview_url"] as! String)!
                         if let album = item["album"] as? JSONStandard {
                             if let images = album["images"] as? [JSONStandard] {
-                                let imageData = images[0]
+                                let imageData = images[1]
+                                
                                 let mainImageURL = URL(string: imageData["url"] as! String)
-                                //TODO: get with thread
                                 let mainImageData = NSData(contentsOf: mainImageURL!)
                                 
                                 let mainImage = UIImage(data: mainImageData as! Data)
@@ -60,11 +63,11 @@ class MainTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tracks.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         let track = tracks[indexPath.row]
         
@@ -75,6 +78,11 @@ class MainTableViewController: UITableViewController {
         imageView.image = track.image
         
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let track = tracks[indexPath.row]
+        player.play(track: track)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

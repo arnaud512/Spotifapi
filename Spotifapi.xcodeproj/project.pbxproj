@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5103A7C11DC90C2300500AA3 /* PlayerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5103A7C01DC90C2300500AA3 /* PlayerProgressBar.swift */; };
+		511D51ED1DC7EA3300A845C2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511D51EC1DC7EA3300A845C2 /* Player.swift */; };
+		511D51EF1DC7EFE700A845C2 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511D51EE1DC7EFE700A845C2 /* PlayerViewController.swift */; };
 		516083B81DC7BBE4004A3D9D /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516083B71DC7BBE4004A3D9D /* AudioViewController.swift */; };
 		51940A401DC7A429005A207B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51940A3F1DC7A429005A207B /* AppDelegate.swift */; };
-		51940A421DC7A429005A207B /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51940A411DC7A429005A207B /* MainTableViewController.swift */; };
+		51940A421DC7A429005A207B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51940A411DC7A429005A207B /* MainViewController.swift */; };
 		51940A451DC7A429005A207B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51940A431DC7A429005A207B /* Main.storyboard */; };
 		51940A481DC7A429005A207B /* Spotifapi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51940A461DC7A429005A207B /* Spotifapi.xcdatamodeld */; };
 		51940A4A1DC7A429005A207B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51940A491DC7A429005A207B /* Assets.xcassets */; };
@@ -43,10 +46,13 @@
 		1965139B3C28E4AF1860AA9E /* Pods-SpotifapiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifapiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifapiTests/Pods-SpotifapiTests.release.xcconfig"; sourceTree = "<group>"; };
 		1F0DA03A158A94D719FF8836 /* Pods_SpotifapiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotifapiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		338AE79CB26A285DA12F4B3C /* Pods_Spotifapi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotifapi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5103A7C01DC90C2300500AA3 /* PlayerProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProgressBar.swift; sourceTree = "<group>"; };
+		511D51EC1DC7EA3300A845C2 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		511D51EE1DC7EFE700A845C2 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		516083B71DC7BBE4004A3D9D /* AudioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		51940A3C1DC7A429005A207B /* Spotifapi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotifapi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51940A3F1DC7A429005A207B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		51940A411DC7A429005A207B /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		51940A411DC7A429005A207B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		51940A441DC7A429005A207B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		51940A471DC7A429005A207B /* Spotifapi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spotifapi.xcdatamodel; sourceTree = "<group>"; };
 		51940A491DC7A429005A207B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -134,14 +140,17 @@
 			isa = PBXGroup;
 			children = (
 				51940A3F1DC7A429005A207B /* AppDelegate.swift */,
-				51940A411DC7A429005A207B /* MainTableViewController.swift */,
+				51940A411DC7A429005A207B /* MainViewController.swift */,
 				516083B71DC7BBE4004A3D9D /* AudioViewController.swift */,
+				511D51EE1DC7EFE700A845C2 /* PlayerViewController.swift */,
 				51940A431DC7A429005A207B /* Main.storyboard */,
 				51940A491DC7A429005A207B /* Assets.xcassets */,
 				51940A4B1DC7A429005A207B /* LaunchScreen.storyboard */,
 				51940A4E1DC7A429005A207B /* Info.plist */,
 				51940A461DC7A429005A207B /* Spotifapi.xcdatamodeld */,
 				51940A701DC7B4AC005A207B /* Track.swift */,
+				511D51EC1DC7EA3300A845C2 /* Player.swift */,
+				5103A7C01DC90C2300500AA3 /* PlayerProgressBar.swift */,
 			);
 			path = Spotifapi;
 			sourceTree = "<group>";
@@ -459,10 +468,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				51940A481DC7A429005A207B /* Spotifapi.xcdatamodeld in Sources */,
-				51940A421DC7A429005A207B /* MainTableViewController.swift in Sources */,
+				51940A421DC7A429005A207B /* MainViewController.swift in Sources */,
 				51940A401DC7A429005A207B /* AppDelegate.swift in Sources */,
+				511D51EF1DC7EFE700A845C2 /* PlayerViewController.swift in Sources */,
 				51940A711DC7B4AC005A207B /* Track.swift in Sources */,
+				511D51ED1DC7EA3300A845C2 /* Player.swift in Sources */,
 				516083B81DC7BBE4004A3D9D /* AudioViewController.swift in Sources */,
+				5103A7C11DC90C2300500AA3 /* PlayerProgressBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
