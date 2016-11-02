@@ -20,6 +20,7 @@
 		51940A581DC7A429005A207B /* SpotifapiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51940A571DC7A429005A207B /* SpotifapiTests.swift */; };
 		51940A631DC7A429005A207B /* SpotifapiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51940A621DC7A429005A207B /* SpotifapiUITests.swift */; };
 		51940A711DC7B4AC005A207B /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51940A701DC7B4AC005A207B /* Track.swift */; };
+		51ACDBB31DCA48CA003FA4B6 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ACDBB21DCA48CA003FA4B6 /* Playlist.swift */; };
 		E03491DE482125A19F96D21B /* Pods_SpotifapiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0DA03A158A94D719FF8836 /* Pods_SpotifapiTests.framework */; };
 		EEF4C453652390BFC5731551 /* Pods_SpotifapiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7094D6B64C7D7837EC15514 /* Pods_SpotifapiUITests.framework */; };
 		F8624C5C7914EC9E3A5E31D6 /* Pods_Spotifapi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338AE79CB26A285DA12F4B3C /* Pods_Spotifapi.framework */; };
@@ -65,6 +66,7 @@
 		51940A621DC7A429005A207B /* SpotifapiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifapiUITests.swift; sourceTree = "<group>"; };
 		51940A641DC7A429005A207B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51940A701DC7B4AC005A207B /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		51ACDBB21DCA48CA003FA4B6 /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		6D56BD77365A0B13A116B01D /* Pods-Spotifapi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotifapi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spotifapi/Pods-Spotifapi.release.xcconfig"; sourceTree = "<group>"; };
 		78B0BDC96FEE3552FEF2D36E /* Pods-SpotifapiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifapiTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotifapiTests/Pods-SpotifapiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		93491BB561EF613F8C3EC5CD /* Pods-Spotifapi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotifapi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spotifapi/Pods-Spotifapi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				51940A701DC7B4AC005A207B /* Track.swift */,
 				511D51EC1DC7EA3300A845C2 /* Player.swift */,
 				5103A7C01DC90C2300500AA3 /* PlayerProgressBar.swift */,
+				51ACDBB21DCA48CA003FA4B6 /* Playlist.swift */,
 			);
 			path = Spotifapi;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 			files = (
 				51940A481DC7A429005A207B /* Spotifapi.xcdatamodeld in Sources */,
 				51940A421DC7A429005A207B /* MainViewController.swift in Sources */,
+				51ACDBB31DCA48CA003FA4B6 /* Playlist.swift in Sources */,
 				51940A401DC7A429005A207B /* AppDelegate.swift in Sources */,
 				511D51EF1DC7EFE700A845C2 /* PlayerViewController.swift in Sources */,
 				51940A711DC7B4AC005A207B /* Track.swift in Sources */,

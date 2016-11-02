@@ -24,7 +24,8 @@ class Player: NSObject {
         }
     }
         
-    func play(track: Track) {
+    func play(track: Track, isPlaylist: Bool = false) {
+        self.isPlaylist = isPlaylist
         self.track = track
         delegate?.updateUI(type: .data)
         downloadFileFromUrl(url: track.previewUrl)
@@ -49,11 +50,32 @@ class Player: NSObject {
             print(error)
         }
     }
+    
+    // MARK: Playlist
+    
+    var isPlaylist = false
+    var playlist: Playlist?
+    
+    func play(playlist: Playlist) {
+        self.playlist = playlist
+        playNext()
+    }
+    
+    private func playNext() {
+        if let track = playlist?.next() {
+            self.play(track: track, isPlaylist: true)
+        }
+    }
 
 }
 
 extension Player: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if isPlaylist {
+            if let track = playlist?.next() {
+                self.play(track: track, isPlaylist: true)
+            }
+        }
         delegate?.updateUI(type: .lecture)
     }
 }

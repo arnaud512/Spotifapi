@@ -24,7 +24,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             return _searchUrl
         }
         set {
-            print(newValue)
             _searchUrl = "https://api.spotify.com/v1/search?q=\(newValue)&type=track"
         }
     }
@@ -35,6 +34,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         title = "Spotifapi"
         playerContainer.isHidden = true
+        
+        let cellTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
+            self.updateCell()
+        }
+        RunLoop.current.add(cellTimer, forMode: .commonModes)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     func callAlamo(url: String) {
@@ -87,19 +95,26 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        
         let track = tracks[indexPath.row]
         
         let title = cell?.viewWithTag(1) as! UILabel
         title.text = track.title
+        title.textColor = .black
+        title.font = UIFont.systemFont(ofSize: 17)
         
         let imageView = cell?.viewWithTag(2) as! UIImageView
         imageView.image = track.image
+        
+        let artists = cell?.viewWithTag(3) as! UILabel
+        artists.text = track.artists.joined(separator: ", ")
         
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let track = tracks[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
         playerContainer.isHidden = false
         player.play(track: track)
     }
@@ -111,6 +126,29 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let track = tracks[(indexPath?.row)!]
             audioVC.track = track
         }
+    }
+    
+    @IBAction func playAllButton(_ sender: Any) {
+        playerContainer.isHidden = false
+        player.play(playlist: Playlist(playlist: tracks))
+    }
+    
+    func updateCell() {
+        if let indexPaths = tableView.indexPathsForVisibleRows, let track = player.track {
+            for indexPath in indexPaths {
+                let cell = tableView.cellForRow(at: indexPath)
+                if tracks[indexPath.row] == track {
+                    let title = cell?.viewWithTag(1) as! UILabel
+                    title.textColor = UIColor(red:0.215, green:0.676, blue:0.386, alpha:1)
+                    title.font = UIFont.boldSystemFont(ofSize: 25.0)
+                } else {
+                    let title = cell?.viewWithTag(1) as! UILabel
+                    title.textColor = .black
+                    title.font = UIFont.systemFont(ofSize: 17)
+                }
+            }
+        }
+        
     }
     
 }

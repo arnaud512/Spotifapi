@@ -14,3 +14,7 @@ struct Track {
     let image: UIImage!
     let previewUrl: URL!
 }
+
+func ==(track1: Track, track2: Track) -> Bool {
+    return track1.previewUrl == track2.previewUrl
+}
