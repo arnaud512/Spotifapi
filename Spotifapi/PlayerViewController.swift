@@ -41,6 +41,7 @@ class PlayerViewController: UIViewController, PlayerDelegate {
         if type == .data {
             if let track = player.track {
                 titleLabel.text = track.title
+                artistLabel.text = track.artists.joined(separator: ", ")
                 imageView.image = track.image
             }
         }

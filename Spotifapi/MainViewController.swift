@@ -34,6 +34,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Spotifapi"
+        playerContainer.isHidden = true
     }
     
     func callAlamo(url: String) {
@@ -51,6 +52,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                         let name = item["name"] as! String
                         let previewURL = URL(string: item["preview_url"] as! String)!
                         if let album = item["album"] as? JSONStandard {
+                            var artistsNames = [String]()
+                            if let artists = album["artists"] as? [JSONStandard] {
+                                for artist in artists {
+                                    artistsNames.append("\(artist["name"]!)")
+                                }
+                            }
                             if let images = album["images"] as? [JSONStandard] {
                                 let imageData = images[0]
                                 
@@ -58,7 +65,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                                 URLSession.shared.dataTask(with: mainImageURL!, completionHandler: { (data, response, error) in
                                     DispatchQueue.main.async(execute: { () -> Void in
                                         let mainImage = UIImage(data: data!)
-                                        self.tracks.append(Track.init(title: name, image: mainImage, previewUrl: previewURL))
+                                        self.tracks.append(Track.init(title: name, artists: artistsNames, image: mainImage, previewUrl: previewURL))
                                         self.tableView.reloadData()
 
                                     })
@@ -93,6 +100,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let track = tracks[indexPath.row]
+        playerContainer.isHidden = false
         player.play(track: track)
     }
     

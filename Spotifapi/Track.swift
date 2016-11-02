@@ -10,6 +10,7 @@ import UIKit
 
 struct Track {
     let title: String!
+    let artists: [String]!
     let image: UIImage!
     let previewUrl: URL!
 }
