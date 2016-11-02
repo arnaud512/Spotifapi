@@ -87,7 +87,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mgy-Ne-KFB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hAv-8l-e7b">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hAv-8l-e7b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.088242470893080002" green="0.62585450217203442" blue="0.28494537184383795" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -276,7 +276,7 @@
                                 </connections>
                             </tableView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Un6-yp-fLa">
-                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="667" width="375" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="PNO-bZ-HGa"/>
                                 </constraints>
@@ -287,7 +287,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5oU-eU-pQa" firstAttribute="top" secondItem="Un6-yp-fLa" secondAttribute="bottom" id="1UB-wW-ep5"/>
+                            <constraint firstItem="5oU-eU-pQa" firstAttribute="top" secondItem="Un6-yp-fLa" secondAttribute="bottom" constant="-80" id="1UB-wW-ep5"/>
                             <constraint firstItem="5oU-eU-pQa" firstAttribute="top" secondItem="IIT-Eb-8WQ" secondAttribute="bottom" id="4Ch-zG-iDs"/>
                             <constraint firstAttribute="trailing" secondItem="Un6-yp-fLa" secondAttribute="trailing" id="BG6-pX-4Ka"/>
                             <constraint firstItem="IIT-Eb-8WQ" firstAttribute="leading" secondItem="N3C-ZC-6cI" secondAttribute="leading" id="ITf-qf-w9H"/>
@@ -306,6 +306,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="playerContainer" destination="Un6-yp-fLa" id="hH6-iW-eo8"/>
+                        <outlet property="playerContainerBottomConstraint" destination="1UB-wW-ep5" id="4fq-1y-Sdg"/>
                         <outlet property="searchBar" destination="3nK-mF-BCt" id="pVw-7d-Mf3"/>
                         <outlet property="tableView" destination="IIT-Eb-8WQ" id="K9i-Mg-yl1"/>
                     </connections>

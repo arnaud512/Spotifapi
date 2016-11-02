@@ -12,6 +12,7 @@ import Alamofire
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var playerContainer: UIView!
+    @IBOutlet weak var playerContainerBottomConstraint: NSLayoutConstraint!
     
     typealias JSONStandard = [String : AnyObject]
     
@@ -27,13 +28,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             _searchUrl = "https://api.spotify.com/v1/search?q=\(newValue)&type=track"
         }
     }
+    var nextUrl: String?
     
     var tracks = [Track]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Spotifapi"
-        playerContainer.isHidden = true
         
         let cellTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
             self.updateCell()
@@ -55,6 +56,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         do {
             var readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! JSONStandard
             if let tracks = readableJSON["tracks"] as? JSONStandard {
+                if let next = tracks["next"] as? String {
+                    self.nextUrl = next
+                }
                 if let items = tracks["items"] as? [JSONStandard] {
                     for item in items {
                         let name = item["name"] as! String
@@ -115,8 +119,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let track = tracks[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
-        playerContainer.isHidden = false
+        tooglePlayerContainer(isHidden: false)
         player.play(track: track)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == tracks.count - 1, let next = nextUrl {
+            callAlamo(url: next)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -129,7 +139,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func playAllButton(_ sender: Any) {
-        playerContainer.isHidden = false
+        tooglePlayerContainer(isHidden: false)
         player.play(playlist: Playlist(playlist: tracks))
     }
     
@@ -149,6 +159,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
+    }
+    
+    func tooglePlayerContainer(isHidden: Bool) {
+        let inset: CGFloat = isHidden ? -80 : 0
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            self.tableView.contentInset = UIEdgeInsetsMake(64, 0, inset + 80, 0)
+            self.playerContainerBottomConstraint.constant = inset
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
 }
