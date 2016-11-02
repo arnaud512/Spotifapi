@@ -16,16 +16,24 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     typealias JSONStandard = [String : AnyObject]
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
 
-    let searchUrl = "https://api.spotify.com/v1/search?q=Muse&type=track"
+    var _searchUrl = ""
+    var searchUrl: String {
+        get {
+            return _searchUrl
+        }
+        set {
+            print(newValue)
+            _searchUrl = "https://api.spotify.com/v1/search?q=\(newValue)&type=track"
+        }
+    }
+    
     var tracks = [Track]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Spotifapi"
-        
-        // TODO: make this non-blocking
-        self.callAlamo(url: self.searchUrl)
     }
     
     func callAlamo(url: String) {
@@ -44,14 +52,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                         let previewURL = URL(string: item["preview_url"] as! String)!
                         if let album = item["album"] as? JSONStandard {
                             if let images = album["images"] as? [JSONStandard] {
-                                let imageData = images[1]
+                                let imageData = images[0]
                                 
                                 let mainImageURL = URL(string: imageData["url"] as! String)
-                                let mainImageData = NSData(contentsOf: mainImageURL!)
-                                
-                                let mainImage = UIImage(data: mainImageData as! Data)
-                                self.tracks.append(Track.init(title: name, image: mainImage, previewUrl: previewURL))
-                                self.tableView.reloadData()
+                                URLSession.shared.dataTask(with: mainImageURL!, completionHandler: { (data, response, error) in
+                                    DispatchQueue.main.async(execute: { () -> Void in
+                                        let mainImage = UIImage(data: data!)
+                                        self.tracks.append(Track.init(title: name, image: mainImage, previewUrl: previewURL))
+                                        self.tableView.reloadData()
+
+                                    })
+                                }).resume()
                             }
                         }
                         
@@ -92,9 +103,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let track = tracks[(indexPath?.row)!]
             audioVC.track = track
         }
-        
-        
     }
     
+}
+
+extension MainViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+        if let keywords = searchBar.text {
+            searchUrl = keywords.replacingOccurrences(of: " ", with: "+")
+            tracks.removeAll()
+            tableView.reloadData()
+            self.callAlamo(url: self.searchUrl)
+        }
+    }
 }
 
