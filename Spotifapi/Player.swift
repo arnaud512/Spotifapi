@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import MediaPlayer
 
 protocol PlayerDelegate {
     func updateUI(type: Player.updateUIType)
@@ -23,8 +24,32 @@ class Player: NSObject {
             delegate?.updateUI(type: .lecture)
         }
     }
+    
+    override init() {
+        super.init()
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+            try audioSession.setActive(true)
+            
+            let commandCenter = MPRemoteCommandCenter.shared()
+            commandCenter.pauseCommand.isEnabled = true
+            commandCenter.pauseCommand.addTarget(self, action: #selector(pauseCC))
+            
+            commandCenter.playCommand.isEnabled = true
+            commandCenter.playCommand.addTarget(self, action: #selector(playCC))
+            
+            commandCenter.nextTrackCommand.isEnabled = false
+            commandCenter.nextTrackCommand.addTarget(self, action: #selector(nextCC))
+        } catch {
+            print(error)
+        }
+    }
         
     func play(track: Track, isPlaylist: Bool = false) {
+        if isReadyToPlay {
+            audioPlayer.stop()
+        }
         self.isPlaylist = isPlaylist
         self.track = track
         delegate?.updateUI(type: .data)
@@ -45,6 +70,8 @@ class Player: NSObject {
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
             audioPlayer.play()
+            
+            updateCC()
             isReadyToPlay = true
         } catch {
             print(error)
@@ -61,9 +88,55 @@ class Player: NSObject {
         playNext()
     }
     
-    private func playNext() {
+    func playNext() {
+        print("playNext")
         if let track = playlist?.next() {
             self.play(track: track, isPlaylist: true)
+        }
+    }
+    
+    // MARK: ControlCenter
+    
+    private func updateCC(isPause: Bool = false) {
+        let commandCenter = MPRemoteCommandCenter.shared()
+        if isPlaylist {
+            commandCenter.nextTrackCommand.isEnabled = playlist?.hasNext ?? false
+        } else {
+            commandCenter.nextTrackCommand.isEnabled = false
+        }
+        
+        let artwork = MPMediaItemArtwork(boundsSize: track!.image.size, requestHandler: { (size) -> UIImage in
+            return self.track!.image
+        })
+        
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+            MPMediaItemPropertyArtist: track!.artists.joined(separator: ", "),
+            MPMediaItemPropertyTitle: track!.title,
+            MPMediaItemPropertyPlaybackDuration: audioPlayer.duration,
+            MPNowPlayingInfoPropertyPlaybackRate: NSNumber(value: isPause ? 0 : 1),
+            MPNowPlayingInfoPropertyElapsedPlaybackTime: audioPlayer.currentTime,
+            MPMediaItemPropertyArtwork: artwork,
+        ]
+    }
+    
+    func playCC() {
+        if isReadyToPlay {
+            audioPlayer.play()
+            updateCC()
+        }
+    }
+    
+    func pauseCC() {
+        if isReadyToPlay {
+            audioPlayer.pause()
+            updateCC(isPause: true)
+        }
+    }
+    
+    func nextCC() {
+        print("nextCC")
+        if isReadyToPlay {
+            playNext()
         }
     }
 
@@ -72,9 +145,7 @@ class Player: NSObject {
 extension Player: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         if isPlaylist {
-            if let track = playlist?.next() {
-                self.play(track: track, isPlaylist: true)
-            }
+            playNext()
         }
         delegate?.updateUI(type: .lecture)
     }
