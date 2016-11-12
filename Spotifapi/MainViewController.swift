@@ -19,6 +19,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
 
+    var queryId: Int!
     var _searchUrl = ""
     var searchUrl: String {
         get {
@@ -36,10 +37,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         title = "Spotifapi"
         
-        let cellTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
-            self.updateCell()
-        }
-        RunLoop.current.add(cellTimer, forMode: .commonModes)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateCells), name: PlayerViewController.playerUpdateNotification, object: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -47,6 +45,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func callAlamo(url: String) {
+        queryId = Int(arc4random())
         Alamofire.request(url).responseJSON { response in
             self.parseData(JSONData: response.data!)
         }
@@ -54,6 +53,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func parseData(JSONData: Data) {
         do {
+            let id = queryId
             var readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! JSONStandard
             if let tracks = readableJSON["tracks"] as? JSONStandard {
                 if let next = tracks["next"] as? String {
@@ -77,9 +77,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                                 URLSession.shared.dataTask(with: mainImageURL!, completionHandler: { (data, response, error) in
                                     DispatchQueue.main.async(execute: { () -> Void in
                                         let mainImage = UIImage(data: data!)
-                                        self.tracks.append(Track.init(title: name, artists: artistsNames, image: mainImage, previewUrl: previewURL))
-                                        self.tableView.reloadData()
-
+                                        if id == self.queryId {
+                                            self.tracks.append(Track.init(title: name, artists: artistsNames, image: mainImage, previewUrl: previewURL))
+                                            self.tableView.reloadData()
+                                        }
                                     })
                                 }).resume()
                             }
@@ -104,8 +105,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let title = cell?.viewWithTag(1) as! UILabel
         title.text = track.title
-        title.textColor = .black
-        title.font = UIFont.systemFont(ofSize: 17)
+        updateCell(cell: cell, atIndexPath: indexPath)
         
         let imageView = cell?.viewWithTag(2) as! UIImageView
         imageView.image = track.image
@@ -121,6 +121,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.deselectRow(at: indexPath, animated: true)
         tooglePlayerContainer(isHidden: false)
         player.play(track: track)
+        
+        updateCells()
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -143,19 +145,24 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         player.play(playlist: Playlist(playlist: tracks))
     }
     
-    func updateCell() {
-        if let indexPaths = tableView.indexPathsForVisibleRows, let track = player.track {
+    func updateCell(cell: UITableViewCell?, atIndexPath indexPath: IndexPath) {
+        if let cell = cell, let track = player.track {
+            let title = cell.viewWithTag(1) as! UILabel
+            if tracks[indexPath.row] == track {
+                title.textColor = UIColor(red:0.215, green:0.676, blue:0.386, alpha:1)
+                title.font = UIFont.boldSystemFont(ofSize: 25.0)
+            } else {
+                title.textColor = .black
+                title.font = UIFont.systemFont(ofSize: 17)
+            }
+        }
+    }
+    
+    func updateCells() {
+        if let indexPaths = tableView.indexPathsForVisibleRows{
             for indexPath in indexPaths {
                 let cell = tableView.cellForRow(at: indexPath)
-                if tracks[indexPath.row] == track {
-                    let title = cell?.viewWithTag(1) as! UILabel
-                    title.textColor = UIColor(red:0.215, green:0.676, blue:0.386, alpha:1)
-                    title.font = UIFont.boldSystemFont(ofSize: 25.0)
-                } else {
-                    let title = cell?.viewWithTag(1) as! UILabel
-                    title.textColor = .black
-                    title.font = UIFont.systemFont(ofSize: 17)
-                }
+                updateCell(cell: cell, atIndexPath:  indexPath)
             }
         }
         

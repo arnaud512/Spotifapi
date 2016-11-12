@@ -89,7 +89,6 @@ class Player: NSObject {
     }
     
     func playNext() {
-        print("playNext")
         if let track = playlist?.next() {
             self.play(track: track, isPlaylist: true)
         }
@@ -134,7 +133,6 @@ class Player: NSObject {
     }
     
     func nextCC() {
-        print("nextCC")
         if isReadyToPlay {
             playNext()
         }

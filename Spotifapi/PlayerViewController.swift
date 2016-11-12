@@ -16,6 +16,8 @@ class PlayerViewController: UIViewController, PlayerDelegate {
     @IBOutlet weak var lectureButton: UIButton!
     @IBOutlet weak var progressBarView: PlayerProgressBarView!
     
+    static let playerUpdateNotification = Notification.Name("PlayerUpdate")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         player.delegate = self
@@ -48,6 +50,8 @@ class PlayerViewController: UIViewController, PlayerDelegate {
         if type == .lecture {
             updateLectureButton()
         }
+        
+        NotificationCenter.default.post(name: PlayerViewController.playerUpdateNotification, object: nil)
         
     }
     

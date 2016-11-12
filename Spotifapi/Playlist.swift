@@ -14,8 +14,6 @@ class Playlist {
     var index = 0
     var hasNext: Bool {
         get {
-            print(playlist.count)
-            print(index)
             return playlist.count > index
         }
     }
