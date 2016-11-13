@@ -76,5 +76,19 @@ class PlayerViewController: UIViewController, PlayerDelegate {
             progressBarView.progress = Double(progressPosition)
         }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let position = touch.location(in: progressBarView)
+            player.setPlayerTo(position: Float(position.x) / Float(progressBarView.bounds.width))
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let position = touch.location(in: progressBarView)
+            player.setPlayerTo(position: Float(position.x) / Float(progressBarView.bounds.width))
+        }
+    }
 
 }

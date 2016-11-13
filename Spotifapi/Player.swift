@@ -78,6 +78,13 @@ class Player: NSObject {
         }
     }
     
+    func setPlayerTo(position: Float) {
+        if isReadyToPlay {
+            let time = TimeInterval(position) * audioPlayer.duration
+            audioPlayer.currentTime = time
+        }
+    }
+    
     // MARK: Playlist
     
     var isPlaylist = false
