@@ -30,11 +30,11 @@ class PlayerViewController: UIViewController, PlayerDelegate {
     }
     
     @IBAction func toogleLecture(_ sender: Any) {
-        if player.audioPlayer.isPlaying {
-            player.audioPlayer.pause()
+        if player.audioPlayerNode.isPlaying {
+            player.audioPlayerNode.pause()
             
         } else {
-            player.audioPlayer.play()
+            player.audioPlayerNode.play()
         }
         updateLectureButton()
     }
@@ -59,7 +59,7 @@ class PlayerViewController: UIViewController, PlayerDelegate {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
                 if player.isReadyToPlay {
-                    if player.audioPlayer.isPlaying {
+                    if player.audioPlayerNode.isPlaying {
                         self.lectureButton.setImage(#imageLiteral(resourceName: "pause-button"), for: .normal)
                     } else {
                         self.lectureButton.setImage(#imageLiteral(resourceName: "play-button"), for: .normal)
@@ -71,10 +71,10 @@ class PlayerViewController: UIViewController, PlayerDelegate {
     }
     
     func updateProgressBar() {
-        if player.isReadyToPlay {
+        /*if player.isReadyToPlay {
             let progressPosition = player.audioPlayer.currentTime / player.audioPlayer.duration
             progressBarView.progress = Double(progressPosition)
-        }
+        */
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

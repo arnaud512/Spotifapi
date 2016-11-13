@@ -16,7 +16,11 @@ protocol PlayerDelegate {
 
 class Player: NSObject {
     
-    var audioPlayer = AVAudioPlayer()
+    var audioEngine: AVAudioEngine!
+    var audioPlayerNode: AVAudioPlayerNode!
+    var audioRatePitch: AVAudioUnitTimePitch!
+    var audioFile: AVAudioFile!
+    
     var track: Track?
     var delegate: PlayerDelegate?
     var isReadyToPlay: Bool = false {
@@ -27,7 +31,7 @@ class Player: NSObject {
     
     override init() {
         super.init()
-        let audioSession = AVAudioSession.sharedInstance()
+        /*let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSessionCategoryPlayback)
             try audioSession.setActive(true)
@@ -43,12 +47,12 @@ class Player: NSObject {
             commandCenter.nextTrackCommand.addTarget(self, action: #selector(nextCC))
         } catch {
             print(error)
-        }
+        }*/
     }
         
     func play(track: Track, isPlaylist: Bool = false) {
         if isReadyToPlay {
-            audioPlayer.stop()
+            audioEngine.stop()
         }
         self.isPlaylist = isPlaylist
         self.track = track
@@ -66,12 +70,25 @@ class Player: NSObject {
     
     private func play(url: URL) {
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer.delegate = self
-            audioPlayer.prepareToPlay()
-            audioPlayer.play()
+            // TODO: audioPlayer.delegate = self
+            audioEngine = AVAudioEngine()
+            audioRatePitch = AVAudioUnitTimePitch()
+            audioRatePitch.pitch = 600
+            audioPlayerNode = AVAudioPlayerNode()
             
-            updateCC()
+            audioEngine.attach(audioRatePitch)
+            audioEngine.attach(audioPlayerNode)
+            
+            audioEngine.connect(audioPlayerNode, to: audioRatePitch, format: nil)
+            audioEngine.connect(audioRatePitch, to: audioEngine.outputNode, format: nil)
+            
+            audioFile = try AVAudioFile(forReading: url)
+            try audioEngine.start()
+            
+            audioPlayerNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
+            audioPlayerNode.play()
+            
+            //updateCC()
             isReadyToPlay = true
         } catch {
             print(error)
@@ -79,10 +96,10 @@ class Player: NSObject {
     }
     
     func setPlayerTo(position: Float) {
-        if isReadyToPlay {
+        /*if isReadyToPlay {
             let time = TimeInterval(position) * audioPlayer.duration
-            audioPlayer.currentTime = time
-        }
+            audioPlayerNode.currentTime = time
+        }*/
     }
     
     // MARK: Playlist
@@ -103,7 +120,7 @@ class Player: NSObject {
     
     // MARK: ControlCenter
     
-    private func updateCC(isPause: Bool = false) {
+    /*private func updateCC(isPause: Bool = false) {
         let commandCenter = MPRemoteCommandCenter.shared()
         if isPlaylist {
             commandCenter.nextTrackCommand.isEnabled = playlist?.hasNext ?? false
@@ -143,7 +160,7 @@ class Player: NSObject {
         if isReadyToPlay {
             playNext()
         }
-    }
+    }*/
 
 }
 
