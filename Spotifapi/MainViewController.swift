@@ -176,7 +176,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
-    
 }
 
 extension MainViewController: UISearchBarDelegate {

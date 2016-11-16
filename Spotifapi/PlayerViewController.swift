@@ -40,6 +40,8 @@ class PlayerViewController: UIViewController, PlayerDelegate {
     }
     
     func updateUI(type: Player.updateUIType) {
+        print("updateUI")
+        print(type)
         if type == .data {
             if let track = player.track {
                 titleLabel.text = track.title
@@ -71,24 +73,28 @@ class PlayerViewController: UIViewController, PlayerDelegate {
     }
     
     func updateProgressBar() {
-        /*if player.isReadyToPlay {
-            let progressPosition = player.audioPlayer.currentTime / player.audioPlayer.duration
-            progressBarView.progress = Double(progressPosition)
-        */
+        if player.isReadyToPlay {
+            progressBarView.progress = player.currentPosition()
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let position = touch.location(in: progressBarView)
-            player.setPlayerTo(position: Float(position.x) / Float(progressBarView.bounds.width))
+            player.setPlayerTo(position: Double(position.x) / Double(progressBarView.bounds.width))
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let position = touch.location(in: progressBarView)
-            player.setPlayerTo(position: Float(position.x) / Float(progressBarView.bounds.width))
+            player.setPlayerTo(position: Double(position.x) / Double(progressBarView.bounds.width))
         }
+    }
+    
+    @IBAction func pitchSliderMove(_ sender: UISlider) {
+        print(sender.value)
+        player.audioRatePitch.pitch = sender.value
     }
 
 }

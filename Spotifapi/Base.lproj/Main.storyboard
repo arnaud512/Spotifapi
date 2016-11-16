@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mgy-Ne-KFB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mgy-Ne-KFB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -160,6 +160,16 @@
                                                 <action selector="toogleLecture:" destination="anN-Uk-Db4" eventType="touchUpInside" id="aHG-Z5-OG7"/>
                                             </connections>
                                         </button>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-1000" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="bs2-oG-kme">
+                                            <rect key="frame" x="254" y="42" width="115" height="31"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="sME-C2-Unz"/>
+                                                <constraint firstAttribute="width" constant="111" id="xic-Jj-ZHy"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="pitchSliderMove:" destination="anN-Uk-Db4" eventType="valueChanged" id="w63-aR-etX"/>
+                                            </connections>
+                                        </slider>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="KMi-gR-vKA" firstAttribute="top" secondItem="sts-Gu-VMk" secondAttribute="top" constant="8" id="19G-5A-HsT"/>
@@ -168,8 +178,10 @@
                                         <constraint firstAttribute="trailing" secondItem="Jca-H0-xUx" secondAttribute="trailing" id="E8M-Ik-J3H"/>
                                         <constraint firstAttribute="bottom" secondItem="Jca-H0-xUx" secondAttribute="bottom" id="IUv-VV-U6z"/>
                                         <constraint firstAttribute="bottom" secondItem="MCx-FH-gTJ" secondAttribute="bottom" constant="8" id="JoP-nB-Qdv"/>
+                                        <constraint firstAttribute="bottom" secondItem="bs2-oG-kme" secondAttribute="bottom" constant="8" id="M9b-pS-GgU"/>
                                         <constraint firstItem="keQ-TK-dXK" firstAttribute="leading" secondItem="MCx-FH-gTJ" secondAttribute="trailing" constant="8" id="OkT-DF-ZAH"/>
                                         <constraint firstItem="Jca-H0-xUx" firstAttribute="top" secondItem="sts-Gu-VMk" secondAttribute="top" id="QyO-t7-D7C"/>
+                                        <constraint firstAttribute="trailing" secondItem="bs2-oG-kme" secondAttribute="trailing" constant="8" id="ZeB-o2-isk"/>
                                         <constraint firstItem="KMi-gR-vKA" firstAttribute="leading" secondItem="MCx-FH-gTJ" secondAttribute="trailing" constant="8" id="egU-fm-RBY"/>
                                         <constraint firstItem="6eL-IG-nLn" firstAttribute="centerY" secondItem="MCx-FH-gTJ" secondAttribute="centerY" id="fVh-0D-5lD"/>
                                         <constraint firstItem="MCx-FH-gTJ" firstAttribute="leading" secondItem="sts-Gu-VMk" secondAttribute="leading" constant="8" id="j39-jx-43y"/>
@@ -199,7 +211,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6F0-Ra-LNk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1161" y="575"/>
+            <point key="canvasLocation" x="1160.8" y="574.81259370314842"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="4Z1-af-lBW">

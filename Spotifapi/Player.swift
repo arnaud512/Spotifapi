@@ -16,9 +16,9 @@ protocol PlayerDelegate {
 
 class Player: NSObject {
     
-    var audioEngine: AVAudioEngine!
-    var audioPlayerNode: AVAudioPlayerNode!
-    var audioRatePitch: AVAudioUnitTimePitch!
+    var audioEngine = AVAudioEngine()
+    var audioPlayerNode = AVAudioPlayerNode()
+    var audioRatePitch = AVAudioUnitTimePitch()
     var audioFile: AVAudioFile!
     
     var track: Track?
@@ -31,12 +31,18 @@ class Player: NSObject {
     
     override init() {
         super.init()
-        /*let audioSession = AVAudioSession.sharedInstance()
+        audioEngine.attach(audioRatePitch)
+        audioEngine.attach(audioPlayerNode)
+        audioRatePitch.pitch = 0
+        audioEngine.connect(audioPlayerNode, to: audioRatePitch, format: nil)
+        audioEngine.connect(audioRatePitch, to: audioEngine.outputNode, format: nil)
+        
+        let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSessionCategoryPlayback)
             try audioSession.setActive(true)
             
-            let commandCenter = MPRemoteCommandCenter.shared()
+            /*let commandCenter = MPRemoteCommandCenter.shared()
             commandCenter.pauseCommand.isEnabled = true
             commandCenter.pauseCommand.addTarget(self, action: #selector(pauseCC))
             
@@ -44,15 +50,15 @@ class Player: NSObject {
             commandCenter.playCommand.addTarget(self, action: #selector(playCC))
             
             commandCenter.nextTrackCommand.isEnabled = false
-            commandCenter.nextTrackCommand.addTarget(self, action: #selector(nextCC))
+            commandCenter.nextTrackCommand.addTarget(self, action: #selector(nextCC))*/
         } catch {
             print(error)
-        }*/
+        }
     }
         
     func play(track: Track, isPlaylist: Bool = false) {
         if isReadyToPlay {
-            audioEngine.stop()
+            resetAudioEngineAndPlayer()
         }
         self.isPlaylist = isPlaylist
         self.track = track
@@ -70,22 +76,15 @@ class Player: NSObject {
     
     private func play(url: URL) {
         do {
-            // TODO: audioPlayer.delegate = self
-            audioEngine = AVAudioEngine()
-            audioRatePitch = AVAudioUnitTimePitch()
-            audioRatePitch.pitch = 600
-            audioPlayerNode = AVAudioPlayerNode()
-            
-            audioEngine.attach(audioRatePitch)
-            audioEngine.attach(audioPlayerNode)
-            
-            audioEngine.connect(audioPlayerNode, to: audioRatePitch, format: nil)
-            audioEngine.connect(audioRatePitch, to: audioEngine.outputNode, format: nil)
             
             audioFile = try AVAudioFile(forReading: url)
+            let buffer = AVAudioPCMBuffer(pcmFormat: audioFile.processingFormat, frameCapacity: AVAudioFrameCount(audioFile.length))
+            try audioFile.read(into: buffer)
+                
+            audioPlayerNode.scheduleBuffer(buffer, at: nil, options: .interrupts, completionHandler: {
+                self.audioPlayerNodeDidFinishPlaying()
+            })
             try audioEngine.start()
-            
-            audioPlayerNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
             audioPlayerNode.play()
             
             //updateCC()
@@ -95,11 +94,60 @@ class Player: NSObject {
         }
     }
     
-    func setPlayerTo(position: Float) {
-        /*if isReadyToPlay {
-            let time = TimeInterval(position) * audioPlayer.duration
-            audioPlayerNode.currentTime = time
-        }*/
+    func setPlayerTo(position: Double) {
+        if isReadyToPlay {
+            let time = TimeInterval(position * audioFile.fileFormat.sampleRate) * currentLength()
+            audioFile.framePosition = AVAudioFramePosition(time)
+            let buffer = AVAudioPCMBuffer(pcmFormat: audioFile.processingFormat, frameCapacity: AVAudioFrameCount(audioFile.length))
+            do {
+                try audioFile.read(into: buffer)
+            } catch {
+                    
+            }
+            audioPlayerNode.scheduleBuffer(buffer, at: nil, options: .interrupts, completionHandler: {
+                self.audioPlayerNodeDidFinishPlaying()
+            })
+
+            audioPlayerNode.play()
+        }
+        print(currentLength())
+    }
+    
+    func currentTime() -> TimeInterval {
+        if let nodeTime: AVAudioTime = audioPlayerNode.lastRenderTime, let playerTime: AVAudioTime = audioPlayerNode.playerTime(forNodeTime: nodeTime) {
+            return Double(Double(playerTime.sampleTime) / playerTime.sampleRate)
+        }
+        return 0
+    }
+    
+    func currentLength() -> TimeInterval {
+        if let nodeTime: AVAudioTime = audioPlayerNode.lastRenderTime, let playerTime: AVAudioTime = audioPlayerNode.playerTime(forNodeTime: nodeTime) {
+            return Double(Double(audioFile.length) / playerTime.sampleRate)
+        }
+        return 0
+    }
+    
+    func currentPosition() -> Double {
+        let time = currentTime()
+        let length = currentLength()
+        if length != 0 {
+            return Double(time / length)
+        }
+        return 0
+    }
+    
+    func audioPlayerNodeDidFinishPlaying() {
+        resetAudioEngineAndPlayer()
+        if isPlaylist {
+            playNext()
+        }
+        delegate?.updateUI(type: .lecture)
+    }
+    
+    func resetAudioEngineAndPlayer() {
+        audioPlayerNode.stop()
+        audioEngine.stop()
+        audioEngine.reset()
     }
     
     // MARK: Playlist
@@ -162,15 +210,6 @@ class Player: NSObject {
         }
     }*/
 
-}
-
-extension Player: AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        if isPlaylist {
-            playNext()
-        }
-        delegate?.updateUI(type: .lecture)
-    }
 }
 
 extension Player {

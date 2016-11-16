@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import CoreData
-
+import CoreData 
 var player = Player()
 
 @UIApplicationMain
